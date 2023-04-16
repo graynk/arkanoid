@@ -1,0 +1,133 @@
+[gd_scene load_steps=9 format=3 uid="uid://dujwiw0bp2q71"]
+
+[ext_resource type="PackedScene" uid="uid://8uo8da76kj2l" path="res://paddle.tscn" id="1_6h345"]
+[ext_resource type="Script" path="res://game.gd" id="1_t65tc"]
+[ext_resource type="PackedScene" uid="uid://bebchh65n4mlp" path="res://brick.tscn" id="2_pp4ht"]
+[ext_resource type="AudioStream" uid="uid://bro026fjs65hd" path="res://fail.ogg" id="4_5m5yp"]
+[ext_resource type="AudioStream" uid="uid://bulrjuxhfocsi" path="res://win.ogg" id="5_aj5fa"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_p5ahc"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5redo"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3kbjl"]
+normal = Vector2(0, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_t65tc")
+
+[node name="Bricks" type="Node2D" parent="."]
+
+[node name="Layer1" type="Node2D" parent="Bricks"]
+
+[node name="Brick" parent="Bricks/Layer1" instance=ExtResource("2_pp4ht")]
+position = Vector2(179, 120)
+
+[node name="Brick2" parent="Bricks/Layer1" instance=ExtResource("2_pp4ht")]
+position = Vector2(353, 120)
+
+[node name="Brick3" parent="Bricks/Layer1" instance=ExtResource("2_pp4ht")]
+position = Vector2(531, 120)
+
+[node name="Brick4" parent="Bricks/Layer1" instance=ExtResource("2_pp4ht")]
+position = Vector2(705, 120)
+
+[node name="Brick5" parent="Bricks/Layer1" instance=ExtResource("2_pp4ht")]
+position = Vector2(891, 120)
+
+[node name="Brick6" parent="Bricks/Layer1" instance=ExtResource("2_pp4ht")]
+position = Vector2(1065, 120)
+
+[node name="Brick7" parent="Bricks/Layer1" instance=ExtResource("2_pp4ht")]
+position = Vector2(1243, 120)
+
+[node name="Brick8" parent="Bricks/Layer1" instance=ExtResource("2_pp4ht")]
+position = Vector2(1417, 120)
+
+[node name="Layer2" type="Node2D" parent="Bricks"]
+position = Vector2(0, 63)
+
+[node name="Brick2" parent="Bricks/Layer2" instance=ExtResource("2_pp4ht")]
+position = Vector2(353, 120)
+
+[node name="Brick3" parent="Bricks/Layer2" instance=ExtResource("2_pp4ht")]
+position = Vector2(531, 120)
+
+[node name="Brick4" parent="Bricks/Layer2" instance=ExtResource("2_pp4ht")]
+position = Vector2(705, 120)
+
+[node name="Brick5" parent="Bricks/Layer2" instance=ExtResource("2_pp4ht")]
+position = Vector2(891, 120)
+
+[node name="Brick6" parent="Bricks/Layer2" instance=ExtResource("2_pp4ht")]
+position = Vector2(1065, 120)
+
+[node name="Brick7" parent="Bricks/Layer2" instance=ExtResource("2_pp4ht")]
+position = Vector2(1243, 120)
+
+[node name="Layer3" type="Node2D" parent="Bricks"]
+position = Vector2(0, 128)
+
+[node name="Brick3" parent="Bricks/Layer3" instance=ExtResource("2_pp4ht")]
+position = Vector2(531, 120)
+
+[node name="Brick4" parent="Bricks/Layer3" instance=ExtResource("2_pp4ht")]
+position = Vector2(705, 120)
+
+[node name="Brick5" parent="Bricks/Layer3" instance=ExtResource("2_pp4ht")]
+position = Vector2(891, 120)
+
+[node name="Brick6" parent="Bricks/Layer3" instance=ExtResource("2_pp4ht")]
+position = Vector2(1065, 120)
+
+[node name="Layer4" type="Node2D" parent="Bricks"]
+position = Vector2(0, 191)
+
+[node name="Brick4" parent="Bricks/Layer4" instance=ExtResource("2_pp4ht")]
+position = Vector2(705, 120)
+
+[node name="Brick5" parent="Bricks/Layer4" instance=ExtResource("2_pp4ht")]
+position = Vector2(891, 120)
+
+[node name="Paddle" parent="." instance=ExtResource("1_6h345")]
+position = Vector2(800, 768)
+
+[node name="Walls" type="CanvasGroup" parent="."]
+
+[node name="LeftWall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+shape = SubResource("WorldBoundaryShape2D_p5ahc")
+
+[node name="RightWall" type="StaticBody2D" parent="Walls"]
+position = Vector2(1600, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
+shape = SubResource("WorldBoundaryShape2D_5redo")
+
+[node name="TopWall" type="StaticBody2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall"]
+shape = SubResource("WorldBoundaryShape2D_3kbjl")
+
+[node name="GUI" type="CenterContainer" parent="."]
+offset_right = 1600.0
+offset_bottom = 704.0
+metadata/_edit_lock_ = true
+
+[node name="State" type="Label" parent="GUI"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 150
+text = "Loh"
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="FailSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("4_5m5yp")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_aj5fa")

@@ -1,0 +1,5 @@
+# Godot 4+ specific ignores
+.godot/
+addons/godot-git-plugin
+arkanoid.pck
+arkanoid.x86_64

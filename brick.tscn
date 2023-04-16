@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bebchh65n4mlp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xjfeb"]
+size = Vector2(128, 32)
+
+[node name="Brick" type="RigidBody2D" groups=["bricks"]]
+collision_mask = 4
+gravity_scale = 0.0
+sleeping = true
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xjfeb")
+
+[node name="Color" type="ColorRect" parent="."]
+offset_left = -64.0
+offset_top = -16.0
+offset_right = 64.0
+offset_bottom = 16.0
+color = Color(0, 0.486275, 1, 1)

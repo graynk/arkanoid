@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvci2l66lrbhs"]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_vq3cu"]
+[ext_resource type="AudioStream" uid="uid://bqroklgv0ka2i" path="res://hit.ogg" id="2_dlmwa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6ik71"]
+
+[node name="Ball" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_vq3cu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_6ik71")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_dlmwa")
+
+[connection signal="brick_hit" from="." to="." method="_on_brick_hit"]
+[connection signal="other_hit" from="." to="." method="_on_other_hit"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
